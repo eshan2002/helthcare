@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+  build:
+    commands:
+      - echo "Building the application..."
+      - zip -r healthcare-app.zip .
+      - aws s3 cp healthcare-app.zip s3://healthcare-app-deploy/
+artifacts:
+  files:
+    - healthcare-app.zip
